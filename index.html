@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denver Snow Plowing – Colorado Snow Removal</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet" />
+  <!-- favicon -->
+  <link rel="icon" href="./images/favicon.png" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- icon  -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- daisy ui  -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            playfair: ["Playfair Display", "serif"],
+            poppins: ["Poppins", "sans-serif"],
+            shadows: ["Shadows Into Light", "cursive"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .group:hover>.group-hover\:block {
+      display: block;
+    }
+
+    /* Container for snow effect */
+    .snowfall-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Snow overlay div */
+    .snow-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Snowflake styling */
+    .snowflake {
+      position: absolute;
+      top: -20px;
+      /* Start just above section */
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    /* Falling animation with smooth appearance */
+    @keyframes fall {
+      0% {
+        opacity: 0;
+        /* Start fully transparent */
+        transform: translateY(-20px) translateX(0) scale(1);
+        /* Start above */
+      }
+
+      20% {
+        opacity: 0.9;
+        /* Fade in smoothly */
+        transform: translateY(0) translateX(0) scale(1);
+        /* Fully visible at top */
+      }
+
+      40% {
+        opacity: 0.7;
+        transform: translateY(calc(var(--fall-height) * 0.25)) translateX(5px) scale(0.9);
+      }
+
+      60% {
+        opacity: 0.5;
+        transform: translateY(calc(var(--fall-height) * 0.5)) translateX(-5px) scale(0.7);
+      }
+
+      80% {
+        opacity: 0.3;
+        transform: translateY(calc(var(--fall-height) * 0.75)) translateX(3px) scale(0.5);
+      }
+
+      100% {
+        opacity: 0;
+        /* Fade out completely */
+        transform: translateY(var(--fall-height)) translateX(0) scale(0.3);
+      }
+    }
+
+    /* Custom Swiper Dots */
+    .swiper-pagination-bullet {
+      background-color: #ffffff !important;
+      width: 8px;
+      height: 8px;
+      opacity: 0.2;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #ffffff !important;
+      width: 8px;
+      height: 8px;
+      opacity: 1;
+    }
+
+    .mySwiper {
+      padding-bottom: 50px;
+    }
+
+    /* Define roll in and roll out keyframes */
+    @keyframes rollIn {
+      0% {
+        transform: translateY(-100%) rotateX(90deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0) rotateX(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes rollOut {
+      0% {
+        transform: translateY(0) rotateX(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100%) rotateX(-90deg);
+        opacity: 0;
+      }
+    }
+
+    /* Animation classes scoped for these elements */
+    .animate-roll-in {
+      animation: rollIn 0.5s forwards;
+    }
+
+    .animate-roll-out {
+      animation: rollOut 0.5s forwards;
+    }
+
+    /* Custom styles for our slider with the custom class */
+    .custom-center-slider .swiper-slide {
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Active (center) slide gets full opacity */
+    .custom-center-slider .swiper-slide-active {
+      opacity: 1;
+    }
+
+    /* Ensure images fill the slide */
+    .custom-center-slider .swiper-slide img {
+      width: 100%;
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="font-poppins">
+  <!-- header start -->
+  <header class="header relative w-full bg-white z-[999]">
+    <nav class="nav max-w-[1200px] mx-auto px-4 py-4">
+      <div class="nav__data">
+        <a href="/" class="nav__logo">
+          <img src="./images/colorado-snow-services-logo-rev4.png" class="max-w-[135px] lg:max-w-[275px]" alt="">
+        </a>
+      </div>
+      <div class="space-y-3">
+        <div class="flex flex-row justify-end items-center gap-6">
+          <ul class="hidden lg:flex flex-row gap-5">
+            <li>
+              <a href="#" class="text-sm text-black">
+                <span class="text-[12px]">&#10095;</span> Request Quote</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-black">
+                <span class="text-[12px]">&#10095;</span> Employment</a>
+            </li>
+          </ul>
+          <div class="w-px h-5 border-r-[1px] border-[#0000000d]"></div>
+          <a href="tel:+13039059668" class="text-lg lg:text-xl text-black flex flex-row items-center gap-1 font-bold"><img
+              src="./images/phone-fill.svg" alt="" class="w-6" /> (303)
+            905-9668</a>
+        </div>
+  
+        <div class="flex items-center gap-2 justify-end">
+          <!--=============== NAV MENU ===============-->
+          <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+              <li><a href="/" class="nav__link nav-link-active">Home</a></li>
+              <!--=============== DROPDOWN ===============-->
+              <li class="dropdown__item">
+                <div class="nav__link  flex items-center justify-between">
+                  About <i class="ri-arrow-right-s-line dropdown__arrow lg:hidden"></i>
+                </div>
+                <ul class="dropdown__menu">
+                  <li>
+                    <a href="./questions.html" class="dropdown__link">
+                      Questions
+                    </a>
+                  </li>
+  
+                  <li>
+                    <a href="./employment.html" class="dropdown__link">
+                      Employment
+                    </a>
+                  </li>
+  
+                  <!--=============== DROPDOWN SUBMENU ===============-->
+                  <li class="dropdown__subitem">
+                    <div class="dropdown__link flex items-center justify-between">
+                      Service Area <i class="ri-arrow-right-s-line dropdown__arrow"></i>
+                    </div>
+  
+                    <ul class="dropdown__submenu">
+                      <li class="dropdown__subitem">
+                        <div class="dropdown__link flex items-center justify-between">
+                          Colorado <i class="ri-arrow-right-s-line dropdown__arrow"></i>
+                        </div>
+  
+                        <ul class="dropdown__submenu">
+                          <li><a class="dropdown__sublink" href="/arvada/">Arvada</a></li>
+                          <li><a class="dropdown__sublink" href="/aurora/">Aurora</a></li>
+                          <li><a class="dropdown__sublink" href="/centennial/">Centennial</a>
+                          </li>
+                          <li><a class="dropdown__sublink" href="/denver/">Denver</a></li>
+                          <li><a class="dropdown__sublink" href="/englewood/">Englewood</a>
+                          </li>
+                          <li><a class="dropdown__sublink" href="/greenwood-village/">Greenwood Village</a></li>
+                          <li><a class="dropdown__sublink" href="/highlands-ranch/">Highlands
+                              Ranch</a></li>
+                          <li><a class="dropdown__sublink" href="/lakewood/">Lakewood</a></li>
+                          <li><a class="dropdown__sublink" href="/littleton/">Littleton</a>
+                          </li>
+                          <li><a class="dropdown__sublink" href="/lone-tree/">Lone
+                              Tree</a></li>
+                          <li><a class="dropdown__sublink" href="/morrison/">Morrison</a></li>
+                          <li><a class="dropdown__sublink" href="/wheat-ridge/">Wheat
+                              Ridge</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown__subitem">
+                    <div class="dropdown__link flex items-center justify-between">
+                      Divisions <i class="ri-arrow-right-s-line dropdown__arrow"></i>
+                    </div>
+  
+                    <ul class="dropdown__submenu">
+                      <li><a class="dropdown__sublink" href="https://coloradoexteriorcleaning.com">Exterior Cleaning</a>
+                      </li>
+                      <li><a class="dropdown__sublink" href="https://coloradopavementmarking.com">Parking Lot Striping</a>
+                      </li>
+                      <li><a class="dropdown__sublink" href="https://coloradoprowash.com">Pressure
+                          Washing</a></li>
+                      <li><a class="dropdown__sublink" href="https://denverwindowcleaning.com">Window Cleaning</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+  
+              <li><a href="#" class="nav__link">Blog</a></li>
+              <!--=============== DROPDOWN ===============-->
+              <li class="dropdown__item">
+                <div class="nav__link flex items-center justify-between">
+                  Snow Plowing <i class="ri-arrow-right-s-line dropdown__arrow lg:hidden"></i>
+                </div>
+                <ul class="dropdown__menu">
+                  <li>
+                    <a href="#" class="dropdown__link">
+                      Residential
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown__link">
+                      Commercial
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown__item">
+                <div class="nav__link flex items-center justify-between">
+                  Snow Removal <i class="ri-arrow-right-s-line dropdown__arrow lg:hidden"></i>
+                </div>
+                <ul class="dropdown__menu">
+                  <li>
+                    <a href="#" class="dropdown__link">
+                      Residential
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown__link">
+                      Commercial
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#" class="nav__link">Ice Melt</a></li>
+              <li class="dropdown__item">
+                <div class="nav__link flex items-center justify-between">
+                  Contact <i class="ri-arrow-right-s-line dropdown__arrow lg:hidden"></i>
+                </div>
+                <ul class="dropdown__menu">
+                  <li>
+                    <a href="#" class="dropdown__link">
+                      Contact Us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown__link">
+                      Request Quote
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+            </ul>
+          </div>
+          <div>
+            <ul class="flex gap-1">
+              <!-- Facebook Icon -->
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-white hover:bg-[#3b5a9a] transition-colors duration-300 group shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    class="w-4 h-4 fill-current hover:text-white group-hover:text-white">
+                    <path
+                      d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47062 14 5.5 16 5.5H17.5V2.1401C17.1743 2.09685 15.943 2 14.6429 2C11.9284 2 10 3.65686 10 6.69971V9.5H7V13.5H10V22H14V13.5Z" />
+                  </svg>
+                </a>
+              </li>
+              <!-- Twitter Icon -->
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-white hover:bg-[#1aa9e1] transition-colors duration-300 group shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    class="w-4 h-4 fill-current hover:text-white group-hover:text-white">
+                    <path
+                      d="M10.4883 14.651L15.25 21H22.25L14.3917 10.5223L20.9308 3H18.2808L13.1643 8.88578L8.75 3H1.75L9.26086 13.0145L2.31915 21H4.96917L10.4883 14.651ZM16.25 19L5.75 5H7.75L18.25 19H16.25Z" />
+                  </svg>
+                </a>
+              </li>
+              <!-- youtube Icon -->
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-white hover:bg-[#c3191e] transition-colors duration-300 group shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    class="w-4 h-4 fill-current hover:text-white group-hover:text-white">
+                    <path
+                      d="M12.2439 4C12.778 4.00294 14.1143 4.01586 15.5341 4.07273L16.0375 4.09468C17.467 4.16236 18.8953 4.27798 19.6037 4.4755C20.5486 4.74095 21.2913 5.5155 21.5423 6.49732C21.942 8.05641 21.992 11.0994 21.9982 11.8358L21.9991 11.9884L21.9991 11.9991C21.9991 11.9991 21.9991 12.0028 21.9991 12.0099L21.9982 12.1625C21.992 12.8989 21.942 15.9419 21.5423 17.501C21.2878 18.4864 20.5451 19.261 19.6037 19.5228C18.8953 19.7203 17.467 19.8359 16.0375 19.9036L15.5341 19.9255C14.1143 19.9824 12.778 19.9953 12.2439 19.9983L12.0095 19.9991L11.9991 19.9991C11.9991 19.9991 11.9956 19.9991 11.9887 19.9991L11.7545 19.9983C10.6241 19.9921 5.89772 19.941 4.39451 19.5228C3.4496 19.2573 2.70692 18.4828 2.45587 17.501C2.0562 15.9419 2.00624 12.8989 2 12.1625V11.8358C2.00624 11.0994 2.0562 8.05641 2.45587 6.49732C2.7104 5.51186 3.45308 4.73732 4.39451 4.4755C5.89772 4.05723 10.6241 4.00622 11.7545 4H12.2439ZM9.99911 8.49914V15.4991L15.9991 11.9991L9.99911 8.49914Z" />
+                  </svg>
+                </a>
+              </li>
+              <!-- Instagram Icon -->
+              <li>
+                <a href="#"
+                  class="flex items-center justify-center w-7 h-7 rounded-full bg-white hover:bg-[#7c4a3a] transition-colors duration-300 group shadow-md">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    class="w-4 h-4 fill-current hover:text-white group-hover:text-white">
+                    <path
+                      d="M12.001 9C10.3436 9 9.00098 10.3431 9.00098 12C9.00098 13.6573 10.3441 15 12.001 15C13.6583 15 15.001 13.6569 15.001 12C15.001 10.3427 13.6579 9 12.001 9ZM12.001 7C14.7614 7 17.001 9.2371 17.001 12C17.001 14.7605 14.7639 17 12.001 17C9.24051 17 7.00098 14.7629 7.00098 12C7.00098 9.23953 9.23808 7 12.001 7ZM18.501 6.74915C18.501 7.43926 17.9402 7.99917 17.251 7.99917C16.5609 7.99917 16.001 7.4384 16.001 6.74915C16.001 6.0599 16.5617 5.5 17.251 5.5C17.9393 5.49913 18.501 6.0599 18.501 6.74915ZM12.001 4C9.5265 4 9.12318 4.00655 7.97227 4.0578C7.18815 4.09461 6.66253 4.20007 6.17416 4.38967C5.74016 4.55799 5.42709 4.75898 5.09352 5.09255C4.75867 5.4274 4.55804 5.73963 4.3904 6.17383C4.20036 6.66332 4.09493 7.18811 4.05878 7.97115C4.00703 9.0752 4.00098 9.46105 4.00098 12C4.00098 14.4745 4.00753 14.8778 4.05877 16.0286C4.0956 16.8124 4.2012 17.3388 4.39034 17.826C4.5591 18.2606 4.7605 18.5744 5.09246 18.9064C5.42863 19.2421 5.74179 19.4434 6.17187 19.6094C6.66619 19.8005 7.19148 19.9061 7.97212 19.9422C9.07618 19.9939 9.46203 20 12.001 20C14.4755 20 14.8788 19.9934 16.0296 19.9422C16.8117 19.9055 17.3385 19.7996 17.827 19.6106C18.2604 19.4423 18.5752 19.2402 18.9074 18.9085C19.2436 18.5718 19.4445 18.2594 19.6107 17.8283C19.8013 17.3358 19.9071 16.8098 19.9432 16.0289C19.9949 14.9248 20.001 14.5389 20.001 12C20.001 9.52552 19.9944 9.12221 19.9432 7.97137C19.9064 7.18906 19.8005 6.66149 19.6113 6.17318C19.4434 5.74038 19.2417 5.42635 18.9084 5.09255C18.573 4.75715 18.2616 4.55693 17.8271 4.38942C17.338 4.19954 16.8124 4.09396 16.0298 4.05781C14.9258 4.00605 14.5399 4 12.001 4ZM12.001 2C14.7176 2 15.0568 2.01 16.1235 2.06C17.1876 2.10917 17.9135 2.2775 18.551 2.525C19.2101 2.77917 19.7668 3.1225 20.3226 3.67833C20.8776 4.23417 21.221 4.7925 21.476 5.45C21.7226 6.08667 21.891 6.81333 21.941 7.8775C21.9885 8.94417 22.001 9.28333 22.001 12C22.001 14.7167 21.991 15.0558 21.941 16.1225C21.8918 17.1867 21.7226 17.9125 21.476 18.55C21.2218 19.2092 20.8776 19.7658 20.3226 20.3217C19.7668 20.8767 19.2076 21.22 18.551 21.475C17.9135 21.7217 17.1876 21.89 16.1235 21.94C15.0568 21.9875 14.7176 22 12.001 22C9.28431 22 8.94514 21.99 7.87848 21.94C6.81431 21.8908 6.08931 21.7217 5.45098 21.475C4.79264 21.2208 4.23514 20.8767 3.67931 20.3217C3.12348 19.7658 2.78098 19.2067 2.52598 18.55C2.27848 17.9125 2.11098 17.1867 2.06098 16.1225C2.01348 15.0558 2.00098 14.7167 2.00098 12C2.00098 9.28333 2.01098 8.94417 2.06098 7.8775C2.11014 6.8125 2.27848 6.0875 2.52598 5.45C2.78014 4.79167 3.12348 4.23417 3.67931 3.67833C4.23514 3.1225 4.79348 2.78 5.45098 2.525C6.08848 2.2775 6.81348 2.11 7.87848 2.06C8.94514 2.0125 9.28431 2 12.001 2Z" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav__toggle bg-[#1587c8]" id="nav-toggle">
+            <i class="ri-menu-line nav__burger"></i>
+            <i class="ri-close-line nav__close"></i>
+          </div>
+        </div>
+      </div>
+  
+    </nav>
+  </header>
+
+  <!-- header end -->
+  <!-- main start -->
+  <main>
+    <!-- banner start -->
+    <section class="bg-black snowfall-section" id="banner">
+      <div class="snow-overlay"></div>
+      <div class="relative z-0">
+        <div class="max-w-6xl mx-auto md:px-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center flex-col">
+              <img src="./images/snow-plowing.jpg" alt="logo" class="h-full w-full" />
+              <div
+                class="max-w-[1200px] mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center px-4 lg:px-6 py-[41px] w-full gap-5">
+                <div class="text-white space-y-2">
+                  <h1 class="text-lg lg:text-[22px] font-semibold">
+                    Our Denver snow plowing team is ready to go to work for
+                    you.
+                  </h1>
+                  <p class="text-sm lg:text-lg text-[#ffffffb3]">
+                    Check out our services to better understand how we can
+                    serve you.
+                  </p>
+                </div>
+                <a href="#"
+                  class="py-[14px] px-6 md:py-[18px] lg:px-[28px] text-sm lg:text-base bg-[#cb1515] text-white font-semibold rounded-md hover:bg-white hover:text-[#cb1515] hover:border-[#cb1515] border-2 border-[#cb1515]">Request
+                  Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- banner end -->
+    <!-- denver start -->
+    <section class="bg-[#ffffff]" id="denver">
+      <div class="max-w-[1200px] mx-auto px-4 flex flex-col lg:flex-row justify-between lg:space-x-7">
+        <div class="w-full lg:w-[70%] py-[35px] space-y-9">
+          <!-- denver content -->
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#222529] pb-6 lg:pb-[32px]">
+              Denver Snow Plowing - Colorado Snow Removal
+            </h2>
+            <article>
+              <img src="./images/denver-snow-plowing-15.jpg" alt=""
+                class="float-end w-[200px] h-[150px] ml-[20px] mt-1" />
+              <p class="text-sm lg:text-base text-[#000000] clear-left">
+                Colorado Snow Services have been providing top-tier snow
+                removal and ice melt services throughout Colorado for over a
+                decade. Among those customers include residential home owners
+                and commercial property management companies. We have a full
+                fleet of one ton and three-quarter ton trucks equipped with
+                heavy-duty snowplows and salting systems that can be deployed
+                at a moment’s notice to any and every address in the Denver
+                metropolitan area on a 24/7 basis. You’ll also be pleased to
+                learn that our Denver snow plowing service is as far away from
+                a fly-by-night operation as it gets. We aren’t just a couple
+                of guys with a couple of trucks, some snowplows, shovels, and
+                strong backs. We are a 100% fully insured company, accredited
+                by the Better Business Bureau (with an A+ rating) and are
+                proud of the reputation we’ve built up throughout Denver for
+                the solutions we provide.
+              </p>
+            </article>
+          </div>
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#222529] pb-6 lg:pb-[32px]">
+              We manage commercial snow plowing all over Colorado so you can
+              stay warm and indoors.
+            </h2>
+            <article>
+              <img src="./images/denver-snow-plowing-05.jpg" alt=""
+                class="float-start w-[200px] h-[150px] mr-[20px] mt-1" />
+              <p class="text-sm lg:text-base text-[#000000] clear-right">
+                Regardless of whether or not you own a commercial property and
+                need to have snow and ice removed before your business opens
+                for the day, or if you have a snow and ice removal issue at
+                home that you want addressed ASAP (so that you don’t have to
+                be out there with a shovel) we at Colorado Snow Services can
+                help! Our quick responders can guarantee that you go to sleep
+                with snow and ice on your property but wake up with zero
+                headache or hassle whatsoever ready to roll as though it
+                didn’t snow on your property in the first place! A lot of our
+                clients choose to take advantage of our snow and ice removal
+                maintenance services based on the measurement of snow. On the
+                other hand, some of our clients instead look to take advantage
+                of our services on an emergency or spontaneous basis – and
+                that’s perfectly fine with us, too. Our snow and ice removal
+                solutions are available 24/7, every day of the week without
+                exception. We are here to make sure that you don’t have to
+                deal with snow or ice any longer!
+              </p>
+            </article>
+          </div>
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-bold text-[#222529] pb-6 lg:pb-[32px]">
+              Count on a reputable residential snow plowing company in Denver,
+              Colorado.
+            </h2>
+            <article>
+              <img src="./images/colorado-snow-removal-01.jpg" alt=""
+                class="float-end w-[200px] h-[150px] ml-[20px] mt-1" />
+              <p class="text-sm lg:text-base text-[#000000] clear-left">
+                Winters here in Denver metro area can sometimes become rough,
+                with snow piling up, making sidewalks and driveways dangerous.
+                We’ve been helping out friends, neighbors, and communities
+                with the handling of heavy lifting of removing snow
+                efficiently and getting rid of ice before it becomes an unsafe
+                slip and fall hazard. If you’re looking to take advantage of
+                affordable, effective, and reliable snow and ice removal
+                services in Denver or the surrounding community and we hope
+                that you will reach out when you have a chance. Our
+                professional staff is here to help you. If you’d like more
+                details about the services we provide, would like to contact
+                us for residential snow and ice removal estimates, or need
+                emergency services please don’t hesitate to give us a call.
+              </p>
+            </article>
+          </div>
+        </div>
+        <div class="w-full lg:w-[30%] py-[35px]">
+          <div class="sticky top-0 flex flex-col justify-start items-center gap-6">
+            <div>
+              <iframe name="f07700fcd5c567900" width="100%" height="225px" data-testid="fb:page Facebook Social Plugin"
+                title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true"
+                scrolling="no" allow="encrypted-media"
+                src="https://www.facebook.com/v5.0/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dff97934fcd4c9802b%26domain%3Dcoloradosnowservices.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fcoloradosnowservices.com%252Ff81c86d7b621db6a2%26relation%3Dparent.parent&amp;container_width=350&amp;height=225&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fdenversnowplowing&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;small_header=false&amp;tabs=timeline&amp;width=350"
+                style="
+                    border: none;
+                    visibility: visible;
+                    width: 100%;
+                    height: 225px;
+                  " class=""></iframe>
+            </div>
+            <img src="./images/colorado-pro-wash-logo-300x104.png" alt="" />
+            <img src="./images/colorado-bbb-accredited-275x112.jpg" alt="" />
+            <img src="./images/satisfaction-guaranteed-200x200.jpg" alt="" />
+            <img src="./images/snow-removal-character1.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- denver end -->
+    <!-- services start -->
+    <section class="bg-[#ededed] pt-[80px] pb-[60px]" id="services">
+      <div class="max-w-[1200px] mx-auto px-4">
+        <h2 class="text-2xl font-bold text-[#222529] text-center mb-10">
+          Around the Clock Snow Management Services
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-7 gap-y-6">
+          <!-- item 1 -->
+          <div class="flex flex-row items-start justify-between gap-4">
+            <div class="flex self-start justify-center max-w-7">
+              <img src="./images/pin.svg" alt="" class="min-w-7 min-h-7" />
+            </div>
+            <div>
+              <h3 class="text-lg lg:text-[24px] font-bold text-[#222529]">
+                Snow Plowing
+              </h3>
+              <p class="text-sm lg:text-base text-[#000000] mt-3">
+                Our snow plowing services are available 24/7, every day of the
+                week without exception. We are here to make sure that you
+                don’t have to deal with snow or ice any longer!
+              </p>
+            </div>
+          </div>
+          <!-- item 2 -->
+          <div class="flex flex-row items-start justify-between gap-4">
+            <div class="flex self-start justify-center max-w-7">
+              <img src="./images/pencil.svg" alt="" class="min-w-7 min-h-7" />
+            </div>
+            <div>
+              <h3 class="text-lg lg:text-[22px] font-bold text-[#222529]">
+                Risk Reduction Plan
+              </h3>
+              <p class="text-sm lg:text-base text-[#000000] mt-3">
+                Our company is not only equipped with snow plows and shovelers
+                we also have ice melting equipment and services that reduces
+                <span class="text-xl lg:text-2xl text-[#1587c8] font-shadows">slip and fall</span>
+                risks.
+              </p>
+            </div>
+          </div>
+          <!-- item 3 -->
+          <div class="flex flex-row items-start justify-between gap-4">
+            <div class="flex self-start justify-center max-w-7">
+              <img src="./images/clock.svg" alt="" class="min-w-7 min-h-7" />
+            </div>
+            <div>
+              <h3 class="text-lg lg:text-[22px] font-bold text-[#222529]">
+                Fast Response Time
+              </h3>
+              <p class="text-sm lg:text-base text-[#000000] mt-3">
+                We recommend an early accumulation so we can manage your
+                property throughout the storm without getting buried and
+                unable to perform service.
+              </p>
+            </div>
+          </div>
+          <!-- item 4 -->
+          <div class="flex flex-row items-start justify-between gap-4">
+            <div class="flex self-start justify-center max-w-7">
+              <img src="./images/umbrella.svg" alt="" class="min-w-7 min-h-7" />
+            </div>
+            <div>
+              <h3 class="text-lg lg:text-[22px] font-bold text-[#222529]">
+                Weather Tracking
+              </h3>
+              <p class="text-sm lg:text-base text-[#000000] mt-3">
+                During the snow season we are constantly watching the crazy
+                weather we have in Colorado. We can be at your property at
+                just a moments notice
+              </p>
+            </div>
+          </div>
+          <!-- item 5 -->
+          <div class="flex flex-row items-start justify-between gap-4">
+            <div class="flex self-start justify-center max-w-7">
+              <img src="./images/computer.svg" alt="" class="min-w-7 min-h-7" />
+            </div>
+            <div>
+              <h3 class="text-lg lg:text-[22px] font-bold text-[#222529]">
+                Site Monitoring - 24/7/365
+              </h3>
+              <p class="text-sm lg:text-base text-[#000000] mt-3">
+                When dealing with the snow in Colorado it can come in a short
+                time notice. We can accommodate and have someone at your
+                property in a short period of time.
+              </p>
+            </div>
+          </div>
+          <!-- item 6 -->
+          <div class="flex flex-row items-start justify-between gap-4">
+            <div class="flex self-start justify-center max-w-7">
+              <img src="./images/rocket.svg" alt="" class="min-w-7 min-h-7" />
+            </div>
+            <div>
+              <h3 class="text-lg lg:text-[22px] font-bold text-[#222529]">
+                Professional Equipment
+              </h3>
+              <p class="text-sm lg:text-base text-[#000000] mt-3">
+                Not all snow removal equipment is the same. We use the
+                industries best brands in the business. This helps eliminate
+                downtime with using poor quality equipment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- services end -->
+    <!-- testimonial start -->
+    <section class="bg-[url('./images/bg-corporate.jpg')] bg-cover bg-center pt-[80px] pb-[60px]" id="testimonial">
+      <div class="max-w-[880px] mx-auto px-4">
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <!-- Testimonial 1 -->
+            <div class="swiper-slide text-center flex justify-center items-center flex-col">
+              <div>
+                <img src="./images/team-1-150x150.jpg" alt="" class="w-[60px] rounded-full pb-2" />
+              </div>
+              <div class="flex flex-row justify-center items-center">
+                <div class="max-w-8 self-start hidden lg:inline-block">
+                  <img src="./images/quotes-left.svg" alt="quotes left" class="min-w-8" />
+                </div>
+                <p class="text-white text-base lg:text-xl font-playfair p-5">
+                  The team arrived on time and was equipped with all the
+                  necessary tools and machinery to handle the snow quickly and
+                  efficiently. I was particularly impressed by their attention
+                  to detail. They didn’t just clear the snow; they ensured
+                  that all pathways were safe and accessible, applying ice
+                  melt where necessary.
+                </p>
+                <div class="min-w-8 self-end hidden lg:inline-block">
+                  <img src="./images/quotes-right.svg" alt="quotes left" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="text-sm lg:text-base text-white font-bold">
+                  James Reynolds
+                </h4>
+                <h5 class="text-xs text-white font-semibold mt-[2px]">
+                  Highlands Ranch, Colorado
+                </h5>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="swiper-slide text-center flex justify-center items-center flex-col">
+              <div>
+                <img src="./images/team-2-150x150.jpg" alt="" class="w-[60px] rounded-full pb-2" />
+              </div>
+              <div class="flex flex-row justify-center items-center">
+                <div class="max-w-8 self-start hidden lg:inline-block">
+                  <img src="./images/quotes-left.svg" alt="quotes left" class="min-w-8" />
+                </div>
+                <p class="text-white text-base lg:text-xl font-playfair p-5">
+                  The team arrived on time and was equipped with all the
+                  necessary tools and machinery to handle the snow quickly and
+                  efficiently. I was particularly impressed by their attention
+                  to detail. They didn’t just clear the snow; they ensured
+                  that all pathways were safe and accessible, applying ice
+                  melt where necessary.
+                </p>
+                <div class="min-w-8 self-end hidden lg:inline-block">
+                  <img src="./images/quotes-right.svg" alt="quotes left" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="text-sm lg:text-base text-white font-bold">
+                  James Reynolds
+                </h4>
+                <h5 class="text-xs text-white font-semibold mt-[2px]">
+                  Highlands Ranch, Colorado
+                </h5>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="swiper-slide text-center flex justify-center items-center flex-col">
+              <div>
+                <img src="./images/team-8-150x150.jpg" alt="" class="w-[60px] rounded-full pb-2" />
+              </div>
+              <div class="flex flex-row justify-center items-center">
+                <div class="max-w-8 self-start hidden lg:inline-block">
+                  <img src="./images/quotes-left.svg" alt="quotes left" class="min-w-8" />
+                </div>
+                <p class="text-white text-base lg:text-xl font-playfair p-5">
+                  The team arrived on time and was equipped with all the
+                  necessary tools and machinery to handle the snow quickly and
+                  efficiently. I was particularly impressed by their attention
+                  to detail. They didn’t just clear the snow; they ensured
+                  that all pathways were safe and accessible, applying ice
+                  melt where necessary.
+                </p>
+                <div class="min-w-8 self-end hidden lg:inline-block">
+                  <img src="./images/quotes-right.svg" alt="quotes left" class="w-full" />
+                </div>
+              </div>
+              <div>
+                <h4 class="text-sm lg:text-base text-white font-bold">
+                  James Reynolds
+                </h4>
+                <h5 class="text-xs text-white font-semibold mt-[2px]">
+                  Highlands Ranch, Colorado
+                </h5>
+              </div>
+            </div>
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+    <!-- testimonial end -->
+    <!-- about  start -->
+    <section class="bg-[#ededed] pt-[80px] pb-[60px]" id="about ">
+      <div class="max-w-[1200px] mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-7 gap-y-6">
+          <!-- item 1 -->
+          <div class="flex flex-col justify-center items-center">
+            <div class="mb-2 max-w-6">
+              <img src="./images/user.svg" alt="" class="w-full" />
+            </div>
+            <h3 class="text-3xl lg:text-[35] font-bold text-[#222529] count">
+              1500+
+            </h3>
+            <p class="text-base text-[#000000]">Happy Customers</p>
+          </div>
+          <!-- item 2 -->
+          <div class="flex flex-col justify-center items-center">
+            <div class="mb-2 max-w-7">
+              <img src="./images/ribbon.svg" alt="" class="min-w-7" />
+            </div>
+            <h3 class="text-3xl lg:text-[35] font-bold text-[#222529]">15</h3>
+            <p class="text-base text-[#000000]">Years Experience</p>
+          </div>
+          <!-- item 3 -->
+          <div class="flex flex-col justify-center items-center">
+            <div class="mb-2 max-w-6">
+              <img src="./images/picture.svg" alt="" class="w-full" />
+            </div>
+            <h3 class="text-3xl lg:text-[35] font-bold text-[#222529]">
+              5280
+            </h3>
+            <p class="text-base text-[#000000]">Mile High Elevation</p>
+          </div>
+          <!-- item 4 -->
+          <div class="flex flex-col justify-center items-center">
+            <div class="mb-2 max-w-6">
+              <img src="./images/cup.svg" alt="" class="w-full" />
+            </div>
+            <h3 class="text-3xl lg:text-[35] font-bold text-[#222529]">
+              348
+            </h3>
+            <p class="text-base text-[#000000]">Cups of Coffee</p>
+          </div>
+        </div>
+        <div class="swiper myImageSwiper py-20">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div>
+                <div class="relative overflow-hidden group w-full max-w-md mx-auto">
+                  <!-- Image with scale-up effect on hover -->
+                  <img src="./images/project-5-367x367.jpg" alt="Image"
+                    class="w-full h-auto object-cover transition-transform duration-500 transform group-hover:scale-105" />
+
+                  <!-- Dark transparent overlay -->
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                  </div>
+
+                  <!-- Center button (for visual effect) -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <span
+                      class="text-white text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-50">
+                      Small Slider
+                    </span>
+                    <button
+                      class="px-3 py-2 bg-[#1587c8] text-white text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      commercial
+                    </button>
+                  </div>
+
+                  <!-- Top-right button that rotates into view -->
+                  <div class="absolute top-0 right-0">
+                    <button class="bg-[#1587c8] p-3 rounded opacity-0 group-hover:opacity-100 duration-500">
+                      <img src="./images/linked.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <div class="relative overflow-hidden group w-full max-w-md mx-auto">
+                  <!-- Image with scale-up effect on hover -->
+                  <img src="./images/project-7-367x367.jpg" alt="Image"
+                    class="w-full h-auto object-cover transition-transform duration-500 transform group-hover:scale-105" />
+
+                  <!-- Dark transparent overlay -->
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                  </div>
+
+                  <!-- Center button (for visual effect) -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <span
+                      class="text-white text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-50">
+                      Large Slider
+                    </span>
+                    <button
+                      class="px-3 py-2 bg-[#1587c8] text-white text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      Residential
+                    </button>
+                  </div>
+
+                  <!-- Top-right button that rotates into view -->
+                  <div class="absolute top-0 right-0">
+                    <button class="bg-[#1587c8] p-3 rounded opacity-0 group-hover:opacity-100 duration-500">
+                      <img src="./images/linked.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <div class="relative overflow-hidden group w-full max-w-md mx-auto">
+                  <!-- Image with scale-up effect on hover -->
+                  <img src="./images/project-short-367x367.jpg" alt="Image"
+                    class="w-full h-auto object-cover transition-transform duration-500 transform group-hover:scale-105" />
+
+                  <!-- Dark transparent overlay -->
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                  </div>
+
+                  <!-- Center button (for visual effect) -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <span
+                      class="text-white text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-50">
+                      Wide Slider
+                    </span>
+                    <button
+                      class="px-3 py-2 bg-[#1587c8] text-white text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      Residential
+                    </button>
+                  </div>
+
+                  <!-- Top-right button that rotates into view -->
+                  <div class="absolute top-0 right-0">
+                    <button class="bg-[#1587c8] p-3 rounded opacity-0 group-hover:opacity-100 duration-500">
+                      <img src="./images/linked.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <div class="relative overflow-hidden group w-full max-w-md mx-auto">
+                  <!-- Image with scale-up effect on hover -->
+                  <img src="./images/project-6-367x367.jpg" alt="Image"
+                    class="w-full h-auto object-cover transition-transform duration-500 transform group-hover:scale-105" />
+
+                  <!-- Dark transparent overlay -->
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                  </div>
+
+                  <!-- Center button (for visual effect) -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <span
+                      class="text-white text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-50">
+                      Video
+                    </span>
+                    <button
+                      class="px-3 py-2 bg-[#1587c8] text-white text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      Commercial
+                    </button>
+                  </div>
+
+                  <!-- Top-right button that rotates into view -->
+                  <div class="absolute top-0 right-0">
+                    <button class="bg-[#1587c8] p-3 rounded opacity-0 group-hover:opacity-100 duration-500">
+                      <img src="./images/linked.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <div class="relative overflow-hidden group w-full max-w-md mx-auto">
+                  <!-- Image with scale-up effect on hover -->
+                  <img src="./images/project-full-width-2-367x367.jpg" alt="Image"
+                    class="w-full h-auto object-cover transition-transform duration-500 transform group-hover:scale-105" />
+
+                  <!-- Dark transparent overlay -->
+                  <div
+                    class="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                  </div>
+
+                  <!-- Center button (for visual effect) -->
+                  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <span
+                      class="text-white text-base font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-50">
+                      Full Width Slider
+                    </span>
+                    <button
+                      class="px-3 py-2 bg-[#1587c8] text-white text-[11px] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      Commercial
+                    </button>
+                  </div>
+
+                  <!-- Top-right button that rotates into view -->
+                  <div class="absolute top-0 right-0">
+                    <button class="bg-[#1587c8] p-3 rounded opacity-0 group-hover:opacity-100 duration-500">
+                      <img src="./images/linked.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-3xl lg:text-[32px] font-bold text-[#222529] text-center mb-6">
+          <span>We're not the only ones</span>
+          <span id="rollContainer" class="inline-block align-middle">
+            <span class="inline-block">happy</span>
+            <span class="inline-block">excited</span>
+          </span>
+          <span>about our snow services</span>
+        </h2>
+        <p class="text-base text-[#1587c8] text-center">
+          Meet some of our snow plowing and ice removal customers in Colorado.
+        </p>
+        <div class="swiper custom-center-slider pt-20 pb-10">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-1.png" alt="Slide 1" />
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-2.png" alt="Slide 2" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-3.png" alt="Slide 3" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-4.png" alt="Slide 4" />
+            </div>
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-5.png" alt="Slide 5" />
+            </div>
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-6.png" alt="Slide 6" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-3.png" alt="Slide 3" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <img src="./images/logo-4.png" alt="Slide 4" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- about  end -->
+  </main>
+  <!-- main end -->
+  <!-- footer start -->
+  <footer class="bg-[url('./images/css-footer.jpg')] bg-cover bg-center">
+    <div
+      class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 pt-[70px] pb-[50px] space-y-7 lg:space-y-0 lg:space-x-7">
+      <div>
+        <a href="/">
+          <img src="./images/colorado-snow-services-logo-rev4.png" alt="" />
+        </a>
+        <p class="text-sm text-[#cccccc] mt-4">
+          With over a decade of experience our snow removal company has grown
+          from a small, local business into a trusted name in the industry.
+          Our team of experienced professionals is well-versed in the latest
+          snow plowing techniques and equipped with state-of-the-art machinery
+          to handle any winter storm's demands.
+        </p>
+      </div>
+      <div>
+        <div>
+          <img src="./images/css-google-reviews.png" alt="" class="mx-auto lg:ml-0" />
+        </div>
+        <div><img src="./images/payment-options-final.png" alt="" /></div>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <h3 class="text-xl text-white font-semibold">Residential</h3>
+          <ul class="space-y-2 mt-3">
+            <li>
+              <a href="#" class="text-sm text-white hover:text-[#cccccc]">
+                <span class="text-[12px]">&#10095;</span> Snow Plowing</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-white hover:text-[#cccccc]">
+                <span class="text-[12px]">&#10095;</span> Snow Removal</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-white hover:text-[#cccccc]">
+                <span class="text-[12px]">&#10095;</span> Ice Melt /
+                De-icing</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl text-white font-semibold">Commercial</h3>
+          <ul class="space-y-2 mt-3">
+            <li>
+              <a href="#" class="text-sm text-white hover:text-[#cccccc]">
+                <span class="text-[12px]">&#10095;</span> Snow Plowing</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-white hover:text-[#cccccc]">
+                <span class="text-[12px]">&#10095;</span> Snow Removal</a>
+            </li>
+            <li>
+              <a href="#" class="text-sm text-white hover:text-[#cccccc]">
+                <span class="text-[12px]">&#10095;</span> Ice Melt /
+                De-icing</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <h3 class="text-xl text-white font-semibold">
+            Colorado Snow Services
+          </h3>
+          <div class="flex flex-row items-start justify-between gap-4 mt-3">
+            <div class="flex self-start justify-center max-w-5">
+              <img src="./images/radioboxsvg.svg" alt="" class="min-w-5 min-h-5" />
+            </div>
+            <div>
+              <p class="text-sm text-[#cccccc]">
+                1312 17th Street #701, Denver, CO 80202
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl text-white font-semibold mb-3">Call Or Text</h3>
+          <a href="tel:+13039059668" class="text-lg lg:text-2xl text-[#cccccc] hover:text-white">(303) 905-9668</a>
+        </div>
+        <div>
+          <h3 class="text-xl text-white font-semibold">Follow Us</h3>
+          <ul class="flex space-x-2 mt-3">
+            <!-- Facebook Icon -->
+            <li>
+              <a href="#"
+                class="flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-[#3b5a9a] transition-colors duration-300 group">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                  class="w-5 h-5 fill-current hover:text-white group-hover:text-white">
+                  <path
+                    d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47062 14 5.5 16 5.5H17.5V2.1401C17.1743 2.09685 15.943 2 14.6429 2C11.9284 2 10 3.65686 10 6.69971V9.5H7V13.5H10V22H14V13.5Z" />
+                </svg>
+              </a>
+            </li>
+            <!-- Twitter Icon -->
+            <li>
+              <a href="#"
+                class="flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-[#1aa9e1] transition-colors duration-300 group">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                  class="w-5 h-5 fill-current hover:text-white group-hover:text-white">
+                  <path
+                    d="M10.4883 14.651L15.25 21H22.25L14.3917 10.5223L20.9308 3H18.2808L13.1643 8.88578L8.75 3H1.75L9.26086 13.0145L2.31915 21H4.96917L10.4883 14.651ZM16.25 19L5.75 5H7.75L18.25 19H16.25Z" />
+                </svg>
+              </a>
+            </li>
+            <!-- youtube Icon -->
+            <li>
+              <a href="#"
+                class="flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-[#c3191e] transition-colors duration-300 group">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                  class="w-5 h-5 fill-current hover:text-white group-hover:text-white">
+                  <path
+                    d="M12.2439 4C12.778 4.00294 14.1143 4.01586 15.5341 4.07273L16.0375 4.09468C17.467 4.16236 18.8953 4.27798 19.6037 4.4755C20.5486 4.74095 21.2913 5.5155 21.5423 6.49732C21.942 8.05641 21.992 11.0994 21.9982 11.8358L21.9991 11.9884L21.9991 11.9991C21.9991 11.9991 21.9991 12.0028 21.9991 12.0099L21.9982 12.1625C21.992 12.8989 21.942 15.9419 21.5423 17.501C21.2878 18.4864 20.5451 19.261 19.6037 19.5228C18.8953 19.7203 17.467 19.8359 16.0375 19.9036L15.5341 19.9255C14.1143 19.9824 12.778 19.9953 12.2439 19.9983L12.0095 19.9991L11.9991 19.9991C11.9991 19.9991 11.9956 19.9991 11.9887 19.9991L11.7545 19.9983C10.6241 19.9921 5.89772 19.941 4.39451 19.5228C3.4496 19.2573 2.70692 18.4828 2.45587 17.501C2.0562 15.9419 2.00624 12.8989 2 12.1625V11.8358C2.00624 11.0994 2.0562 8.05641 2.45587 6.49732C2.7104 5.51186 3.45308 4.73732 4.39451 4.4755C5.89772 4.05723 10.6241 4.00622 11.7545 4H12.2439ZM9.99911 8.49914V15.4991L15.9991 11.9991L9.99911 8.49914Z" />
+                </svg>
+              </a>
+            </li>
+            <!-- Instagram Icon -->
+            <li>
+              <a href="#"
+                class="flex items-center justify-center w-9 h-9 rounded-full bg-white hover:bg-[#7c4a3a] transition-colors duration-300 group">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                  class="w-5 h-5 fill-current hover:text-white group-hover:text-white">
+                  <path
+                    d="M12.001 9C10.3436 9 9.00098 10.3431 9.00098 12C9.00098 13.6573 10.3441 15 12.001 15C13.6583 15 15.001 13.6569 15.001 12C15.001 10.3427 13.6579 9 12.001 9ZM12.001 7C14.7614 7 17.001 9.2371 17.001 12C17.001 14.7605 14.7639 17 12.001 17C9.24051 17 7.00098 14.7629 7.00098 12C7.00098 9.23953 9.23808 7 12.001 7ZM18.501 6.74915C18.501 7.43926 17.9402 7.99917 17.251 7.99917C16.5609 7.99917 16.001 7.4384 16.001 6.74915C16.001 6.0599 16.5617 5.5 17.251 5.5C17.9393 5.49913 18.501 6.0599 18.501 6.74915ZM12.001 4C9.5265 4 9.12318 4.00655 7.97227 4.0578C7.18815 4.09461 6.66253 4.20007 6.17416 4.38967C5.74016 4.55799 5.42709 4.75898 5.09352 5.09255C4.75867 5.4274 4.55804 5.73963 4.3904 6.17383C4.20036 6.66332 4.09493 7.18811 4.05878 7.97115C4.00703 9.0752 4.00098 9.46105 4.00098 12C4.00098 14.4745 4.00753 14.8778 4.05877 16.0286C4.0956 16.8124 4.2012 17.3388 4.39034 17.826C4.5591 18.2606 4.7605 18.5744 5.09246 18.9064C5.42863 19.2421 5.74179 19.4434 6.17187 19.6094C6.66619 19.8005 7.19148 19.9061 7.97212 19.9422C9.07618 19.9939 9.46203 20 12.001 20C14.4755 20 14.8788 19.9934 16.0296 19.9422C16.8117 19.9055 17.3385 19.7996 17.827 19.6106C18.2604 19.4423 18.5752 19.2402 18.9074 18.9085C19.2436 18.5718 19.4445 18.2594 19.6107 17.8283C19.8013 17.3358 19.9071 16.8098 19.9432 16.0289C19.9949 14.9248 20.001 14.5389 20.001 12C20.001 9.52552 19.9944 9.12221 19.9432 7.97137C19.9064 7.18906 19.8005 6.66149 19.6113 6.17318C19.4434 5.74038 19.2417 5.42635 18.9084 5.09255C18.573 4.75715 18.2616 4.55693 17.8271 4.38942C17.338 4.19954 16.8124 4.09396 16.0298 4.05781C14.9258 4.00605 14.5399 4 12.001 4ZM12.001 2C14.7176 2 15.0568 2.01 16.1235 2.06C17.1876 2.10917 17.9135 2.2775 18.551 2.525C19.2101 2.77917 19.7668 3.1225 20.3226 3.67833C20.8776 4.23417 21.221 4.7925 21.476 5.45C21.7226 6.08667 21.891 6.81333 21.941 7.8775C21.9885 8.94417 22.001 9.28333 22.001 12C22.001 14.7167 21.991 15.0558 21.941 16.1225C21.8918 17.1867 21.7226 17.9125 21.476 18.55C21.2218 19.2092 20.8776 19.7658 20.3226 20.3217C19.7668 20.8767 19.2076 21.22 18.551 21.475C17.9135 21.7217 17.1876 21.89 16.1235 21.94C15.0568 21.9875 14.7176 22 12.001 22C9.28431 22 8.94514 21.99 7.87848 21.94C6.81431 21.8908 6.08931 21.7217 5.45098 21.475C4.79264 21.2208 4.23514 20.8767 3.67931 20.3217C3.12348 19.7658 2.78098 19.2067 2.52598 18.55C2.27848 17.9125 2.11098 17.1867 2.06098 16.1225C2.01348 15.0558 2.00098 14.7167 2.00098 12C2.00098 9.28333 2.01098 8.94417 2.06098 7.8775C2.11014 6.8125 2.27848 6.0875 2.52598 5.45C2.78014 4.79167 3.12348 4.23417 3.67931 3.67833C4.23514 3.1225 4.79348 2.78 5.45098 2.525C6.08848 2.2775 6.81348 2.11 7.87848 2.06C8.94514 2.0125 9.28431 2 12.001 2Z" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 pb-[50px] space-y-8 lg:space-y-0 lg:space-x-4">
+      <div>
+        <p class="text-sm text-white text-center mb-8">
+          <a href="https://arvada.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Arvada</a>&nbsp;|&nbsp;<a
+            href="https://aurora.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Aurora</a>&nbsp;|&nbsp;<a
+            href="https://centennial.coloradosnowsesrvices.com"
+            class="hover:text-[#cccccc]">Centennial</a>&nbsp;|&nbsp;<a href="https://denver.coloradosnowsesrvices.com"
+            class="hover:text-[#cccccc]">Denver</a>
+          |&nbsp;<a href="https://englewood.coloradosnowsesrvices.com"
+            class="hover:text-[#cccccc]">Englewood</a>&nbsp;|&nbsp;<a
+            href="https://greenwood-village.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Greenwood
+            Village</a>&nbsp;|&nbsp;<a href="https://highlands-ranch.coloradosnowsesrvices.com"
+            class="hover:text-[#cccccc]">Highlands Ranch</a>&nbsp;|&nbsp;<a
+            href="https://lakewood.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Lakewood</a>&nbsp;|&nbsp;<a
+            href="https://littleton.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Littleton</a>&nbsp;|&nbsp;<a
+            href="https://lone-tree.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Lone Tree</a>&nbsp;|&nbsp;<a
+            href="https://morrison.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Morrison</a>&nbsp;|&nbsp;<a
+            href="https://wheat-ridge.coloradosnowsesrvices.com" class="hover:text-[#cccccc]">Wheat Ridge</a>
+        </p>
+        <p class="text-sm text-white text-center">
+          Copyright © <span id="year"></span> ColoradoSnowServices.com - All
+          Rights Reserved.
+        </p>
+      </div>
+      <div>
+        <p class="text-sm text-white text-center mb-8">
+          <a href="https://coloradosnowservices.com/">Home</a>&nbsp;|&nbsp;<a href="/faq/"
+            class="hover:text-[#cccccc]">Questions</a>&nbsp;|&nbsp;<a href="/blog/">Blog</a>&nbsp;|&nbsp;<a
+            href="/colorado/" class="hover:text-[#cccccc]">Service Area</a>&nbsp;|&nbsp;<a href="/contact-us/">Contact
+            Us</a>&nbsp;|&nbsp;<a href="/request-quote/" class="hover:text-[#cccccc]">Request Quote</a>
+          <a href="https://coloradoexteriorcleaning.com/" class="hover:text-[#cccccc]">Exterior
+            Cleaning</a>&nbsp;|&nbsp;<a href="https://coloradopavementmarking.com/" class="hover:text-[#cccccc]">Parking
+            Lot Striping</a>&nbsp;|&nbsp;<a href="https://coloradoprowash.com/" class="hover:text-[#cccccc]">Pressure
+            Washing</a>&nbsp;|&nbsp;<a href="https://denverwindowcleaning.com/" class="hover:text-[#cccccc]">Window
+            Cleaning</a>
+        </p>
+        <p class="text-sm text-white text-center">
+          Web Design and Development Powered By: Website Design Denver.
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer end -->
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" class="hidden fixed bottom-0 right-4 bg-[#404040bf] px-3 py-2 hover:bg-blue-700">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="rgba(255,255,255,1)">
+      <path
+        d="M11.9999 10.8284L7.0502 15.7782L5.63599 14.364L11.9999 8L18.3639 14.364L16.9497 15.7782L11.9999 10.8284Z">
+      </path>
+    </svg>
+  </button>
+  <!-- == javascript == -->
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var swiper = new Swiper(".mySwiper", {
+        loop: true, // Infinite loop
+        autoplay: {
+          delay: 2000, // 3 seconds per slide
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        effect: "slide", // Other options: "fade", "cube", "coverflow"
+        grabCursor: true,
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const swiper = new Swiper(".myImageSwiper", {
+        loop: true,
+        autoplay: {
+          delay: 3000, // Choose one delay value
+          disableOnInteraction: false,
+        },
+        effect: "slide",
+        grabCursor: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
+        },
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const normalizePath = (path) => {
+        path = path.replace(/\/$/, "");
+        if (path === "/index.html") {
+          return "/";
+        }
+        return path;
+      };
+
+      const currentPath = normalizePath(window.location.pathname);
+      const links = document.querySelectorAll(".main-nav a");
+
+      links.forEach((link) => {
+        const linkUrl = new URL(link.href, window.location.origin);
+        const linkPath = normalizePath(linkUrl.pathname);
+        if (
+          linkUrl.hostname === window.location.hostname &&
+          linkPath === currentPath
+        ) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    });
+  </script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      const rollContainer = document.getElementById("rollContainer");
+      const words = rollContainer.querySelectorAll("span");
+      let currentIndex = 0;
+
+      // Hide all words except the first one
+      words.forEach((word, index) => {
+        word.style.display = index === 0 ? "inline-block" : "none";
+      });
+
+      // Cycle through the words every 3 seconds
+      setInterval(() => {
+        // Animate current word out
+        words[currentIndex].classList.remove("animate-roll-in");
+        words[currentIndex].classList.add("animate-roll-out");
+
+        // Wait for the roll-out animation to finish (500ms)
+        setTimeout(() => {
+          words[currentIndex].style.display = "none";
+          words[currentIndex].classList.remove("animate-roll-out");
+
+          // Move to the next word (cycling back to 0 if needed)
+          currentIndex = (currentIndex + 1) % words.length;
+          words[currentIndex].style.display = "inline-block";
+          words[currentIndex].classList.add("animate-roll-in");
+        }, 500);
+      }, 3000);
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const swiper = new Swiper(".custom-center-slider", {
+        loop: true,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          // Mobile: 1 slide per view
+          0: { slidesPerView: 1 },
+          // Tablet: 3 slides per view
+          640: { slidesPerView: 3 },
+          // Desktop: 7 slides per view
+          1024: { slidesPerView: 7 },
+        },
+      });
+    });
+  </script>
+  <script>
+    function createSnowflake(overlay, sectionHeight) {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
+
+      const size = Math.random() * 8 + 8;
+      snowflake.style.width = `${size}px`;
+      snowflake.style.height = `${size}px`;
+
+      snowflake.style.left = `${Math.random() * 100}%`;
+
+      const fallDuration = Math.random() * 8 + 6;
+
+      const fallHeight = sectionHeight * 0.8;
+      snowflake.style.setProperty("--fall-height", `${fallHeight}px`);
+
+      snowflake.style.animation = `fall ${fallDuration}s linear infinite`;
+
+      overlay.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, fallDuration * 1000);
+    }
+
+    document.querySelectorAll(".snowfall-section").forEach((section) => {
+      const overlay = section.querySelector(".snow-overlay");
+      if (overlay) {
+        const sectionHeight = section.offsetHeight;
+        setInterval(() => createSnowflake(overlay, sectionHeight), 40);
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get the container and all counters inside it.
+      const aboutSection = document.getElementById("about");
+      const countElems = aboutSection.querySelectorAll(".count");
+      let hasCounted = false; // Prevents re-triggering the animation
+
+      // Animate a given element's count from start to end over the duration (ms)
+      function animateCount(el, start, end, duration, hasPlus) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min(
+            (timestamp - startTimestamp) / duration,
+            1
+          );
+          const value = Math.floor(progress * (end - start) + start);
+          el.textContent = value + (hasPlus ? "+" : "");
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      }
+
+      // Observer triggers when the about section is at least 50% visible
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasCounted) {
+              hasCounted = true;
+              countElems.forEach((el) => {
+                const originalText = el.textContent.trim();
+                const hasPlus = originalText.endsWith("+");
+                // Remove any non-digit characters (e.g. '+' sign)
+                const targetValue = parseInt(originalText.replace(/\D/g, ""));
+                animateCount(el, 0, targetValue, 2000, hasPlus);
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(aboutSection);
+    });
+  </script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
