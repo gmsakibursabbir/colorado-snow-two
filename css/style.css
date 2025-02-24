@@ -213,6 +213,9 @@
     .nav__link {
         padding-inline: 1rem;
     }
+    .cts-phones{
+        font-size: 13px !important;
+    }
 }
 
 /* For large devices */

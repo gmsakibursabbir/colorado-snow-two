@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,7 +80,7 @@
                     </ul>
                     <div class="w-px h-5 border-r-[1px] border-[#0000000d]"></div>
                     <a href="tel:+13039059668"
-                        class="text-lg lg:text-xl text-black flex flex-row items-center gap-1 font-bold"><img
+                        class="text-lg lg:text-xl text-black flex flex-row items-center gap-1 font-bold cts-phones"><img
                             src="./images/phone-fill.svg" alt="" class="w-6" /> (303)
                         905-9668</a>
                 </div>
@@ -587,6 +587,13 @@
               <div class="flex flex-row sm:items-center gap-4">
                 <!-- Captcha Input and Error Message -->
                 <div class="flex-1">
+                   <label
+                    for="captchaInput"
+                    class="block mb-1 font-semibold text-gray-700"
+                  >
+                    Human Verification
+                    <span class="text-gray-700">*</span>
+                  </label>
                   <input
                     type="text"
                     id="captchaInput"
@@ -594,7 +601,7 @@
                   />
                 </div>
                 <!-- Captcha Image -->
-                <div class="flex items-center">
+                <div class="flex items-center mt-6">
                   <img src="" alt="Captcha Image" id="captchaImage" class="" />
                 </div>
               </div>
@@ -684,7 +691,7 @@
               <div
                 class="sticky top-0 flex flex-col justify-start items-center gap-6"
               >
-                <img src="./images/colorado-pro-wash-logo-300x104.png" alt="" />
+                
                 <img
                   src="./images/colorado-bbb-accredited-275x112.jpg"
                   alt=""
@@ -705,9 +712,9 @@
     <!-- footer start -->
     <footer class="bg-[url('./images/css-footer.jpg')] bg-cover bg-center">
       <div
-        class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 pt-[70px] pb-[50px] space-y-7 lg:space-y-0 lg:space-x-7"
+        class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 pt-[76px] pb-[60px] space-y-7 lg:space-y-0 lg:space-x-7"
       >
-        <div>
+        <div class="flex flex-col items-center lg:items-start">
           <a href="/">
             <img src="./images/colorado-snow-services-logo-rev4.png" alt="" />
           </a>
@@ -729,7 +736,7 @@
           </div>
           <div><img src="./images/payment-options-final.png" alt="" /></div>
         </div>
-        <div class="space-y-5">
+        <div class="space-y-5 lg:space-y-6">
           <div>
             <h3 class="text-xl text-white font-semibold">Residential</h3>
             <ul class="space-y-2 mt-3">
@@ -778,7 +785,9 @@
             <h3 class="text-xl text-white font-semibold">
               Colorado Snow Services
             </h3>
-            <div class="flex flex-row items-start justify-between gap-4 mt-3">
+            <div
+              class="flex flex-row items-start justify-start lg:justify-between gap-3 lg:gap-4 mt-3"
+            >
               <div class="flex self-start justify-center max-w-5">
                 <img
                   src="./images/radioboxsvg.svg"
@@ -797,7 +806,7 @@
             <h3 class="text-xl text-white font-semibold mb-3">Call Or Text</h3>
             <a
               href="tel:+13039059668"
-              class="text-lg lg:text-2xl text-[#cccccc] hover:text-white"
+              class="text-lg lg:text-2xl text-[#cccccc] hover:text-white "
               >(303) 905-9668</a
             >
           </div>
