@@ -433,7 +433,7 @@
           </ul>
           <!-- h2 with pseudo-element for border effect -->
           <h2
-            class="relative inline-block text-2xl lg:text-[36px] text-white bg-[#171717] mt-2 mb-2 z-10 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[-40px] after:border-b-[5px] after:border-[#1587c8] after:z-0"
+            class="relative inline-block text-2xl lg:text-[36px] text-white mt-2 mb-2 z-10 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[-40px] after:border-b-[5px] after:border-[#1587c8] after:z-0"
           >
             Snow Plowing
           </h2>
@@ -615,9 +615,12 @@
     </main>
     <!-- main end -->
     <!-- footer start -->
-    <footer class="bg-[url('./images/css-footer.jpg')] bg-cover bg-center">
+          <footer
+      class="bg-[url('./images/css-footer.jpg')] bg-cover bg-center relative"
+    >
+      <div class="absolute inset-0 bg-black/30"></div>
       <div
-        class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 pt-[76px] pb-[60px] space-y-7 lg:space-y-0 lg:space-x-7"
+        class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 pt-[76px] pb-[60px] space-y-7 lg:space-y-0 lg:space-x-7 relative z-10"
       >
         <div class="flex flex-col items-center lg:items-start">
           <a href="/">
@@ -645,42 +648,112 @@
           <div>
             <h3 class="text-xl text-white font-semibold">Residential</h3>
             <ul class="space-y-2 mt-3">
-              <li>
-                <a href="#" class="text-sm text-white hover:text-[#cccccc]">
-                  <span class="text-[12px]">&#10095;</span> Snow Plowing</a
+              <li class="group">
+                <a
+                  href="#"
+                  class="text-sm text-white hover:text-[#5dc4ffde] flex items-center space-x-1 relative"
                 >
+                  <span
+                    class="text-[12px] transform transition-transform duration-200 group-hover:-translate-x-1"
+                  >
+                    &#10095;
+                  </span>
+                  <span
+                    class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#5dc4ffde] after:transition-all after:duration-200 group-hover:after:w-full"
+                  >
+                    Snow Plowing
+                  </span>
+                </a>
               </li>
-              <li>
-                <a href="#" class="text-sm text-white hover:text-[#cccccc]">
-                  <span class="text-[12px]">&#10095;</span> Snow Removal</a
+              <li class="group">
+                <a
+                  href="#"
+                  class="text-sm text-white hover:text-[#5dc4ffde] flex items-center space-x-1 relative"
                 >
+                  <span
+                    class="text-[12px] transform transition-transform duration-200 group-hover:-translate-x-1"
+                  >
+                    &#10095;
+                  </span>
+                  <span
+                    class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#5dc4ffde] after:transition-all after:duration-200 group-hover:after:w-full"
+                  >
+                    Snow Removal
+                  </span>
+                </a>
               </li>
-              <li>
-                <a href="#" class="text-sm text-white hover:text-[#cccccc]">
-                  <span class="text-[12px]">&#10095;</span> Ice Melt /
-                  De-icing</a
+              <li class="group">
+                <a
+                  href="#"
+                  class="text-sm text-white hover:text-[#5dc4ffde] flex items-center space-x-1 relative"
                 >
+                  <span
+                    class="text-[12px] transform transition-transform duration-200 group-hover:-translate-x-1"
+                  >
+                    &#10095;
+                  </span>
+                  <span
+                    class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#5dc4ffde] after:transition-all after:duration-200 group-hover:after:w-full"
+                  >
+                    Ice Melt / De-icing
+                  </span>
+                </a>
               </li>
             </ul>
           </div>
           <div>
             <h3 class="text-xl text-white font-semibold">Commercial</h3>
             <ul class="space-y-2 mt-3">
-              <li>
-                <a href="#" class="text-sm text-white hover:text-[#cccccc]">
-                  <span class="text-[12px]">&#10095;</span> Snow Plowing</a
+              <li class="group">
+                <a
+                  href="#"
+                  class="text-sm text-white hover:text-[#5dc4ffde] flex items-center space-x-1 relative"
                 >
+                  <span
+                    class="text-[12px] transform transition-transform duration-200 group-hover:-translate-x-1"
+                  >
+                    &#10095;
+                  </span>
+                  <span
+                    class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#5dc4ffde] after:transition-all after:duration-200 group-hover:after:w-full"
+                  >
+                    Snow Plowing
+                  </span>
+                </a>
               </li>
-              <li>
-                <a href="#" class="text-sm text-white hover:text-[#cccccc]">
-                  <span class="text-[12px]">&#10095;</span> Snow Removal</a
+              <li class="group">
+                <a
+                  href="#"
+                  class="text-sm text-white hover:text-[#5dc4ffde] flex items-center space-x-1 relative"
                 >
+                  <span
+                    class="text-[12px] transform transition-transform duration-200 group-hover:-translate-x-1"
+                  >
+                    &#10095;
+                  </span>
+                  <span
+                    class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#5dc4ffde] after:transition-all after:duration-200 group-hover:after:w-full"
+                  >
+                    Snow Removal
+                  </span>
+                </a>
               </li>
-              <li>
-                <a href="#" class="text-sm text-white hover:text-[#cccccc]">
-                  <span class="text-[12px]">&#10095;</span> Ice Melt /
-                  De-icing</a
+              <li class="group">
+                <a
+                  href="#"
+                  class="text-sm text-white hover:text-[#5dc4ffde] flex items-center space-x-1 relative"
                 >
+                  <span
+                    class="text-[12px] transform transition-transform duration-200 group-hover:-translate-x-1"
+                  >
+                    &#10095;
+                  </span>
+                  <span
+                    class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#5dc4ffde] after:transition-all after:duration-200 group-hover:after:w-full"
+                  >
+                    Ice Melt / De-icing
+                  </span>
+                </a>
               </li>
             </ul>
           </div>
@@ -799,7 +872,7 @@
         </div>
       </div>
       <div
-        class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 pb-[50px] space-y-8 lg:space-y-0 lg:space-x-4"
+        class="max-w-[1200px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 pb-[50px] space-y-8 lg:space-y-0 lg:space-x-4 relative z-10"
       >
         <div>
           <p class="text-sm text-white text-center mb-8">
@@ -874,6 +947,7 @@
               class="hover:text-[#cccccc]"
               >Request Quote</a
             >
+            &nbsp;|&nbsp; <br />
             <a
               href="https://coloradoexteriorcleaning.com/"
               class="hover:text-[#cccccc]"
